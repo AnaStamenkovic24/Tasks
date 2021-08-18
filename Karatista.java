@@ -1,6 +1,7 @@
 package Borenje;
-import java.util.ArrayList;
+
 import java.util.Arrays;
+
 
 public class Karatista {
 
@@ -14,13 +15,39 @@ public class Karatista {
     private String rang;
     private String[] kata;
 
+    public boolean IsValidRang() {
+
+        for (int i = 0; i < rang.length(); i++) {
+            if (!Character.isDigit(rang.charAt(0)))
+                return false;
+            else {
+                if (rang.charAt(0) >= 1 && rang.charAt(0) < 10) {
+                    if (rang.substring(1, rang.length() - 1).equals("Kyu")
+                            || rang.substring(1, rang.length() - 1).equals("Dan"))
+                        return true;
+
+                    else if (Character.isDigit(rang.charAt(0)) && Character.isDigit(rang.charAt(1)))
+                        if (rang.charAt(0)==1 && rang.charAt(1)==0 &&
+                                (rang.substring(2, rang.length() - 1).equals("Kyu")
+                                || rang.substring(2, rang.length() - 1).equals("Dan")))
+                            return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
     public Karatista(String ime, int godine, String rang, String[] kata) {
         this.ime = ime;
         if (godine <= 0)
             this.godine = 100;
         System.out.println("Postavljena je podrazumevana vrednost(jer ste uneli nepozitivnu.");
         this.godine = godine;
-        this.rang = rang;
+        if (!IsValidRang()) {
+            this.rang = "10Kyu";
+            System.out.println("Postavljena je podrazumevana vrednost(jer ste uneli nepostojeci rang.");
+        } else this.rang = rang;
         this.kata = kata;
     }
     //Napraviti gettere i setter za sve ove atribute, ali paziti na validnost polja!
@@ -41,7 +68,7 @@ public class Karatista {
     public void setGodine(int godine) {
         if (godine <= 0)
             this.godine = 100;
-        System.out.println("Postavljena je podrazumevana vrednost(jer ste uneli nepozitivnu.");
+        System.out.println("Nije promenjena vrednost.");
         this.godine = godine;
     }
 
@@ -50,7 +77,11 @@ public class Karatista {
     }
 
     public void setRang(String rang) {
-        this.rang = rang;
+        if(IsValidRang()){
+        this.rang = "10Kyu";
+        System.out.println("Nije promenjena vrednost.");}
+        else this.rang =rang;
+
     }
 
     public String[] getKata(int i) {
@@ -71,17 +102,14 @@ public class Karatista {
                 Arrays.toString(this.getKata(index)) + " katom";
     }
 
-    public ArrayList<String> x = new ArrayList<>();
-
-
-
 
     //Napraviti metod vatreniNapad(), koja ispisuje istu poruku kao i napadni() metod, osim sto bira nasumicnu katu.
     public String vatreniNapad() {
-        double randomIndex = Math.random();
+        double randomIndex = Math.floor(Math.random() * kata.length - 1);
         String randomKata = kata[(int) randomIndex];
         return "Karatista " + ime + " napada sa " + randomKata + " katom.";
     }
+
     @Override
     public String toString() {
         return "Karatista{" +
