@@ -68,7 +68,7 @@ public class Poruka {
     // {posiljalac} i {prilamalac} vrse tranzakciju od {suma}, uz poruku: {poruka} ({id})
     @Override
     public String toString() {
-        return posiljalac + " i " + primalac + " vrse transakciju od " + suma + ", uz poruku: " + poruka + " (" + id + ")";
+        return posiljalac + " i " + primalac + " vrse transakciju od " + Math.abs(suma) + ", uz poruku: " + poruka + " (" + id + ")";
     }
 
 }
