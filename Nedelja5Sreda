@@ -1,0 +1,139 @@
+public class Circle extends Shape {
+
+    private double r;
+
+    public Circle(String name, double r) {
+        super(name);
+        this.r = r;
+    }
+
+
+
+    @Override
+    public double circumference() {
+        return 2*r*Math.PI;
+    }
+
+    @Override
+    public double area() {
+        return r*r*Math.PI;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\n" + "Circumference: "
+                + circumference() +"\n"
+                + "Area: " + area();
+    }
+
+
+}
+
+public class Rectangle extends Shape {
+
+    private double a;
+    private double b;
+
+    public Rectangle(String name, double a, double b) {
+        super(name);
+        this.a = a;
+        this.b = b;
+    }
+
+    @Override
+    public double circumference() {
+        return 2 * a + 2 * b;
+    }
+
+    @Override
+    public double area() {
+        return a * b;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Circumference: "
+                + circumference()
+                + "\n Area: " + area();
+    }
+}
+
+
+public abstract class Shape {
+    private String name;
+
+    public Shape(String name) {
+        this.name = name;
+    }
+    public abstract double circumference();
+
+    public abstract double area();
+
+    @Override
+    public String toString() {
+        return "Shape: " + name + "\n";
+    }
+}
+
+public class Square extends Shape{
+
+    private double a;
+
+    public Square(String name, double a) {
+        super(name);
+        this.a = a;
+    }
+
+    @Override
+    public double circumference() {
+        return 4*a;
+    }
+
+    @Override
+    public double area() {
+        return a*a;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Circumference: "
+                + circumference()
+                + "\n Area: " + area();
+    }
+}
+
+public class Triangle extends Shape {
+
+    private double a, b, c;
+
+    public Triangle(String name, double a, double b, double c) {
+        super(name);
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    public Triangle(String name) {
+        super(name);
+    }
+
+    @Override
+    public double circumference() {
+        return a + b + c;
+    }
+
+    @Override
+    public double area() {
+        double s = (a + b + c) / 2;
+        return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Circumference: "
+                + circumference()
+                + "\n Area: " + area();
+    }
+}
+
+
