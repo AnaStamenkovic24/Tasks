@@ -17,11 +17,11 @@ public class FirePokemon extends Pokemon{
     public FirePokemon(String name, int health) {
         super(name,type,health);
     }
-    public String logAll() {
-        return attack().toString()
-                + defend().toString()
-                + wins().toString()
-                + losesFrom().toString();
+   public String logAll() {
+        return attack()
+                + defend()
+                + wins()
+                + losesFrom();
     }
 
     @Override
@@ -57,10 +57,10 @@ public class GrassPokemon extends Pokemon {
     }
 
     public String logAll() {
-        return attack().toString()
-                + defend().toString()
-                + wins().toString()
-                + losesFrom().toString();
+        return attack()
+                + defend()
+                + wins()
+                + losesFrom();
     }
 
     @Override
@@ -123,10 +123,10 @@ public class WaterPokemon extends Pokemon {
     }
 
     public String logAll() {
-        return attack().toString()
-                + defend().toString()
-                + wins().toString()
-                + losesFrom().toString();
+        return attack()
+                + defend()
+                + wins()
+                + losesFrom();
     }
 
     @Override
