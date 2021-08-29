@@ -1,0 +1,155 @@
+package pokemoni;
+
+interface Attackable {
+
+    String wins();
+    String losesFrom();
+    String defend();
+    String attack();
+    
+}
+
+package pokemoni;
+
+
+public class FirePokemon extends Pokemon{
+    private static String type = "Fire";
+    public FirePokemon(String name, int health) {
+        super(name,type,health);
+    }
+    public String logAll() {
+        return attack().toString()
+                + defend().toString()
+                + wins().toString()
+                + losesFrom().toString();
+    }
+
+    @Override
+    public String attack() {
+        return name + " attacks the enemy with fire!";
+    }
+
+    @Override
+    public String defend() {
+        return name + " defends himself physically";
+    }
+
+    @Override
+    public String wins() {
+        return name + " wins GrassPokemon!";
+    }
+
+    @Override
+    public String losesFrom() {
+        return name + " loses from WaterPokemon!";
+    }
+    // Napada: Vatrom
+    // Brani se: Telesno
+    // Pobedjuje: Grass type
+    // Gubi od: Water type
+}
+package pokemoni;
+
+public class GrassPokemon extends Pokemon {
+    private static String type = "Grass";
+    public GrassPokemon(String name, int health) {
+        super(name,type,health);
+    }
+
+    public String logAll() {
+        return attack().toString()
+                + defend().toString()
+                + wins().toString()
+                + losesFrom().toString();
+    }
+
+    @Override
+    public String attack() {
+        return name + " attacks the enemy with grass!";
+    }
+
+    @Override
+    public String defend() {
+        return name + " defends himself by avoiding!";
+    }
+
+    @Override
+    public String wins() {
+        return name + " wins WaterPokemon!";
+    }
+
+    @Override
+    public String losesFrom() {
+        return name + " loses from FirePokemon!";
+    }
+
+
+    // Napada: Travom
+    // Brani se: Izbegava
+    // Pobedjuje: Water type
+    // Gubi od: Fire type
+
+}
+
+package pokemoni;
+//Dopuniti proslednjene klase na odgovarajuci nacin.
+//Napraviti interfejs sa 4 metode koje vracaju String
+public abstract class Pokemon implements Attackable{
+    String name;
+    String type;
+    int health;
+
+    public Pokemon(String name, String type, int health) {
+        this.name = name;
+        this.type = type;
+        this.health = health;
+    }
+
+    public Pokemon(String name, int health) {
+        this.name = name;
+        this.health = health;
+    }
+
+    public abstract String logAll(); //Ispisuje kako pokemon napada, kako se brani, koga pobedjuje i od koga gubi
+
+
+}
+package pokemoni;
+
+public class WaterPokemon extends Pokemon {
+    private static String type = "Water";
+    public WaterPokemon(String name, int health) {
+        super(name,type,health);
+    }
+
+    public String logAll() {
+        return attack().toString()
+                + defend().toString()
+                + wins().toString()
+                + losesFrom().toString();
+    }
+
+    @Override
+    public String attack() {
+        return name + " attacks the enemy with water!";
+    }
+
+    @Override
+    public String defend() {
+        return name + " defends himself with water!";
+    }
+
+    @Override
+    public String wins() {
+        return name + " wins FirePokemon!";
+    }
+
+    @Override
+    public String losesFrom() {
+        return name + " loses from GrassPokemon!";
+    }
+    // Napada: Vodom
+    // Brani se: Vodom
+    // Pobedjuje: Fire type
+    // Gubi od: Grass type
+}
