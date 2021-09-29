@@ -5,7 +5,7 @@
 
 public static List<Integer> removeSomeFromDoubled(List<Integer> numbers) {
        List<Integer> doubledNumbers = numbers.stream().
-               map(x -> x*x).
+               map(x -> x*2).
                collect(Collectors.toList());
        doubledNumbers.removeIf(x -> x % 3 == 0);
        return doubledNumbers;
